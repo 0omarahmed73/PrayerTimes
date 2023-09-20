@@ -1,0 +1,39 @@
+.navAll {
+  padding-block: 10px;
+  background-color: var(--color);
+  width: 100%;
+  :global(.container) {
+    .logo {
+      text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      .img {
+        width: 40px;
+      }
+    }
+    .icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -10px;
+      gap: 6px;
+      .egypt , .usa{
+        width: 30px; 
+        border-radius: 10px;
+        height: 15px;
+        transition: 0.3s;
+        .usaImg , .egyptImg {
+          aspect-ratio: 1/2;
+          width: 100%;
+          height: 100%;
+        }
+        &:hover {
+          scale: 1.05;
+        }
+      }
+    }
+  }
+}

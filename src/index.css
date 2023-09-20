@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+
+:root {
+  --color: #0b1c3a;
+  --color2: #061225;
+  --color3: rgba(0, 91, 53, 0.312);
+  --color4: rgba(76, 76, 76, 0.312);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Almarai', sans-serif !important;
+}
+
+img {
+  width: 100% !important;
+}
+
+.main {
+  min-height: 100vh;
+  background-color: var(--color2) !important;
+
+  .select-method {
+    width: fit-content;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color);
+    padding: 50px;
+    border: 1px solid var(--color4);
+    border-radius: 10px;
+    box-shadow: 0 0 13px 1px rgba(0, 0, 0, 0.342);
+  }
+}
+
+.btn {
+  border-radius: 30px !important;
+  padding: 7.5px 30px !important;
+}
+
+.btn-blue {
+  background-color: #2D2F49 !important;
+  border-color: #2D2F49 !important;
+  box-shadow: 0 0 13px 1px rgba(0, 0, 0, 0.342);
+  transition: 0.3s !important;
+
+  &:hover {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.445) !important;
+  }
+}
+
+.prayers {
+  margin-block: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.066);
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--color);
+  .img {
+    height: 100px;
+    /* width: 150px; */
+    border-radius: 10px !important;
+    overflow: hidden;
+    & img {
+      aspect-ratio: 1 / 0.7;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+option {
+  max-width: 100px !important;
+}
+
+.loader {
+  width: 120px;
+  height: 20px;
+  -webkit-mask: linear-gradient(90deg,#000 70%,#0000 0) left/20% 100%;
+  background:
+   linear-gradient(#000 0 0) left -25% top 0 /20% 100% no-repeat
+   #ddd;
+  animation: l7 1s infinite steps(6);
+}
+@keyframes l7 {
+    100% {background-position: right -25% top 0}
+}
