@@ -67,7 +67,7 @@ const En = () => {
         ) : (
           ""
         )}
-        {prayers && !loading ? (
+        {prayers && !loading && !error ? (
           prayers.timings ? (
             <div className="prayers d-flex flex-column justify-content-center w-100 text-center">
               <p className="text-white mb-1">{prayers.meta.timezone}</p>
