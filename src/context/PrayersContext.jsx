@@ -1,6 +1,7 @@
 import { createContext, useCallback, useState } from "react";
 import { axiosApi } from "../api/axios";
 import moment from "moment";
+import timezones from "timezone-abbreviations";
 import useGeolocation from 'react-hook-geolocation';
 export const PrayersContext = createContext();
 export const PrayersProvider = ({ children }) => {
@@ -38,6 +39,8 @@ export const PrayersProvider = ({ children }) => {
   const setCounter = useCallback(() => {
     setInterval(() => {
       const momentNow = moment();
+      const timeZone = moment()
+      const diff = moment()['_d'].toString().includes('Summer') ? (timeZone.utcOffset() / 60) - 1 : timeZone.utcOffset() / 60
       let nextPrayer = null;
       if (prayers) {
         if (prayers.timings) {
@@ -76,8 +79,8 @@ export const PrayersProvider = ({ children }) => {
             ).subtract(momentNow);
             remainingTime = `${
               parseInt(moment(time).hours()) > 9
-                ? (moment(time).hours() - 2)
-                : "0" + (moment(time).hours() - 2)
+                ? (moment(time).hours() - diff)
+                : "0" + (moment(time).hours() - diff)
             }
             :${
               moment(time).minutes() > 9
@@ -96,8 +99,8 @@ export const PrayersProvider = ({ children }) => {
             );
             remainingTime = `${
               parseInt(moment(time + time2).hours()) > 9
-                ? moment(time + time2).hours() - 2
-                : "0" + (moment(time + time2).hours() - 2)
+                ? moment(time + time2).hours() - diff
+                : "0" + (moment(time + time2).hours() - diff)
             }
             :${
               moment(time + time2).minutes() > 9
