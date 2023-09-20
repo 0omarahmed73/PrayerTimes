@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { PrayersContext } from "../../context/PrayersContext";
 import { useFormik } from "formik";
+import Methods from "../Methods";
 
 const FormAuto = ({handleClose , language}) => {
   const { methods, handleLocation , location , handlePrayers , setCounter  } = useContext(PrayersContext);
@@ -27,13 +28,7 @@ const FormAuto = ({handleClose , language}) => {
           <Form.Group>
             <Form.Label>{language === 'ar' ? 'اختر طريقة القياس' : 'Measurment Method'}</Form.Label>
             <Form.Select name='methods' value={formik.values.methods} onChange={formik.handleChange}>
-              {methods.map((el, idx) => {
-                return (
-                  <option key={crypto.randomUUID()} value={idx + 1}>
-                    {el}
-                  </option>
-                );
-              })}
+              {<Methods/>}
             </Form.Select>
           </Form.Group>
           <Button

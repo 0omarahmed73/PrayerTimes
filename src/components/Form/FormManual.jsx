@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { PrayersContext } from "../../context/PrayersContext";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Methods from "../Methods";
 
 const FormManual = ({ language, handleClose }) => {
-  const { methods, handlePrayersManual, setCounter } = useContext(PrayersContext);
+  const {handlePrayersManual, setCounter } = useContext(PrayersContext);
   const formik = useFormik({
     validateOnMount: true,
     initialValues: {
@@ -42,6 +43,7 @@ const FormManual = ({ language, handleClose }) => {
             ? "الرجاء التأكد من ادخال الدولة"
             : "Please Enter Country's name"
         ),
+        methods : yup.string().required()
     }),
   });
 
@@ -93,16 +95,11 @@ const FormManual = ({ language, handleClose }) => {
           <Form.Group>
           <Form.Label>{language === 'ar' ? 'اختر طريقة القياس' : 'Measurment Method'}</Form.Label>
             <Form.Select
+            name='methods'
               onChange={formik.handleChange}
               value={formik.values.methods}
             >
-              {methods.map((el, idx) => {
-                return (
-                  <option key={crypto.randomUUID()} value={idx + 1}>
-                    {el}
-                  </option>
-                );
-              })}
+              {<Methods/>}
             </Form.Select>
           </Form.Group>
           <Button

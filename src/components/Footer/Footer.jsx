@@ -3,20 +3,20 @@ import { Container } from "react-bootstrap";
 import { PrayersContext } from "../../context/PrayersContext";
 
 const Footer = () => {
-  const { prayers, language } = useContext(PrayersContext);
+  const { prayers, language , Hyears } = useContext(PrayersContext);
   return (
     <footer className="footer pb-3">
       <Container>
-        {prayers ? (
-          prayers.length ? (
+        {
+          Hyears ? (
             <p className="text-white text-center my-2">
               {language === "ar"
                 ? `جميع الحقوق محظفوظة لدى عمر احمد سعيد ${
-                    prayers.date.hijri.date.split("-")[3]
+                  Hyears
                   }`
                 : language === "en"
                 ? `All copyright reserved Omar Ahmed ${
-                    prayers.date.hijri.date.split("-")[3]
+                  Hyears
                   }`
                 : ""}
             </p>
@@ -24,14 +24,12 @@ const Footer = () => {
             <p className="text-white text-center  my-2">
               {" "}
               {language === "ar"
-                ? `جميع الحقوق محظفوظة لدى عمر احمد سعيد 1444`
+                ? `جميع الحقوق محفوظة لدى عمر احمد سعيد  ${new Date().getFullYear()}`
                 : language === "en"
-                ? `All copyright reserved Omar Ahmed 1444`
+                ? `All copyright reserved Omar Ahmed ${new Date().getFullYear()}`
                 : ""}{" "}
             </p>
-          )
-        ) : (
-          ""
+          
         )}
       </Container>
     </footer>

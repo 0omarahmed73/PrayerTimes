@@ -11,7 +11,6 @@ moment.locale('ar-dz')
 const Ar = () => {
   const [timeI , setTimeI] = useState(moment().locale('ar-dz').format('MMM Do YYYY | h:mm:ss'))
   const { setLanguage, prayers, loading , newPrayer , setCounter , error , handleLocation , language , newTime} = useContext(PrayersContext);
-  console.log(error);
   const [show, setShow] = useState({
     type: null,
     show: false,

@@ -90,3 +90,7 @@ option {
 @keyframes l7 {
     100% {background-position: right -25% top 0}
 }
+
+select {
+  max-height: 60px !important;
+}

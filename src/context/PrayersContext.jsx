@@ -5,6 +5,7 @@ import useGeolocation from 'react-hook-geolocation';
 export const PrayersContext = createContext();
 export const PrayersProvider = ({ children }) => {
   const [newPrayer, setNewPrayer] = useState("");
+  const [Hyears , setHYears] = useState(null)
   const [newTime, setNewTime] = useState("");
   const [error , setError] = useState(false)
   const methods = [
@@ -75,8 +76,8 @@ export const PrayersProvider = ({ children }) => {
             ).subtract(momentNow);
             remainingTime = `${
               parseInt(moment(time).hours()) > 9
-                ? moment(time).hours()
-                : "0" + moment(time).hours()
+                ? (moment(time).hours() - 2)
+                : "0" + (moment(time).hours() - 2)
             }
             :${
               moment(time).minutes() > 9
@@ -95,8 +96,8 @@ export const PrayersProvider = ({ children }) => {
             );
             remainingTime = `${
               parseInt(moment(time + time2).hours()) > 9
-                ? moment(time + time2).hours()
-                : "0" + moment(time + time2).hours()
+                ? moment(time + time2).hours() - 2
+                : "0" + (moment(time + time2).hours() - 2)
             }
             :${
               moment(time + time2).minutes() > 9
@@ -131,6 +132,7 @@ export const PrayersProvider = ({ children }) => {
           );
           setLocation([]);
           setPrayers(data.data.data);
+          setHYears(data.data.data.date.hijri.date.split('-')[2]);
         } catch (err) {
           setError(true)
         }
@@ -153,6 +155,7 @@ export const PrayersProvider = ({ children }) => {
             }&method=${values.methods}`
           );
           setPrayers(data.data.data);
+          set
         } catch (err) {
           setError(true)
         }
@@ -178,7 +181,8 @@ export const PrayersProvider = ({ children }) => {
         newTime,
         handlePrayersManual,
         error,
-        setError
+        setError,
+        Hyears
       }}
     >
       {children}
