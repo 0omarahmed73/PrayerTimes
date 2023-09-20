@@ -166,8 +166,10 @@ const En = () => {
         )}
         {error && !loading  ? (
           <div className="prayers d-flex flex-column justify-content-center w-100 text-center">
-              <p className="text-danger mb-0">
+                          <p className="text-danger mb-0">
                 Error happened in fetching data , Please try again!
+                <br />
+                Make sure that location service is on
               </p>
             </div>
         ) : ''}
