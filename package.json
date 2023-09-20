@@ -12,9 +12,11 @@
   "dependencies": {
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
+    "current-timezone": "^1.1.5",
     "formik": "^2.4.5",
     "https": "^1.0.0",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
@@ -22,6 +24,7 @@
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",
     "react-use": "^17.4.0",
+    "timezone-abbreviations": "^1.2.6",
     "yup": "^1.2.0"
   },
   "devDependencies": {
