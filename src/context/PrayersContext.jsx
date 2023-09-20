@@ -155,6 +155,7 @@ export const PrayersProvider = ({ children }) => {
             }&method=${values.methods}`
           );
           setPrayers(data.data.data);
+          setHYears(data.data.data.date.hijri.date.split('-')[2]);
         } catch (err) {
           setError(true)
         }
