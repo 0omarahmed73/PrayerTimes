@@ -11,14 +11,6 @@ const En = () => {
   const [timeI, setTimeI] = useState(
     moment().format("MMM Do YYYY | h:mm:ss")
   );
-  useEffect(() => {
-    const set = setTimeout(() => {
-      setTimeI(moment().format("Do MMM YYYY | h:mm:ss"));
-    }, 1000);
-    return () => {
-      clearInterval(set);
-    };
-  });
 
   const { setLanguage, prayers, error, loading , newPrayer , setCounter , language , newTime } = useContext(PrayersContext);
   const [show, setShow] = useState({
@@ -47,6 +39,16 @@ const En = () => {
       clearInterval(setInt)
     }
   } , [language, setCounter])
+  useEffect (() => {
+    const setInt = setInterval(() => {
+      setTimeI(moment().format('Do MMM YYYY | h:mm:ss'))
+      setCounter()
+    } , 1000)
+    return () => {
+      clearInterval(setInt)
+    }
+  } , [language, setCounter])
+
   return (
     <div className="main">
       <Navbar />
@@ -67,7 +69,7 @@ const En = () => {
         ) : (
           ""
         )}
-        {prayers && !loading && !error ? (
+        {prayers && !loading && !error? (
           prayers.timings ? (
             <div className="prayers d-flex flex-column justify-content-center w-100 text-center">
               <p className="text-white mb-1">{prayers.meta.timezone}</p>
@@ -166,7 +168,7 @@ const En = () => {
         )}
         {error && !loading  ? (
           <div className="prayers d-flex flex-column justify-content-center w-100 text-center">
-                          <p className="text-danger mb-0">
+              <p className="text-danger mb-0">
                 Error happened in fetching data , Please try again!
                 <br />
                 Make sure that location service is on
