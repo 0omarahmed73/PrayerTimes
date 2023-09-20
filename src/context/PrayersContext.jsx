@@ -155,7 +155,6 @@ export const PrayersProvider = ({ children }) => {
             }&method=${values.methods}`
           );
           setPrayers(data.data.data);
-          set
         } catch (err) {
           setError(true)
         }
