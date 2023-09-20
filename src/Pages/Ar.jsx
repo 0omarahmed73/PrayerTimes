@@ -160,6 +160,8 @@ const Ar = () => {
           <div className="prayers d-flex flex-column justify-content-center w-100 text-center">
               <p className="text-danger mb-0">
                 حدث خطأ في جلب البيانات الرجاء المحاولة مرة اخرى!
+                <br/>
+                والتاكد من تشغيل خدمة الموقع
               </p>
             </div>
         ) : ''}
